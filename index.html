@@ -29,47 +29,135 @@
       <div class="row">
         <div class="col-md-12 mb-2">
           Métrica:
-        <select id="metrica" class="mr-3">
-          <option value="total">Total</option>
-          <option value="HP">Puntos de vida</option>
-          <option value="Attack">Ataque</option>
-          <option value="Defense">Defensa</option>
-          <option value="SpAtk">Ataque Especial</option>
-          <option value="SpDef">Defensa Especial</option>
-        </select>
-        <div id="types">
-          <input type="checkbox" id="Grass" class="type" checked value="Grass" />
-          <label for="Grass">Planta</label>
-          <input type="checkbox" class="type" id="Fire" checked value="Fire" />
-          <label for="Fire">Fuego</label>
-          <input type="checkbox" class="type" id="Water" checked value="Water" />
-          <label for="Water">Agua</label>
-          <input type="checkbox" class="type" id="Bug" checked value="Bug" />
-          <label for="Bug">Bicho</label>
-          <input type="checkbox" class="type" id="Normal" checked value="Normal" />
-          <label for="Normal">Normal</label>
-          <input type="checkbox" class="type" id="Poison" checked value="Poison" />
-          <label for="Poison">Veneno</label>
-          <input type="checkbox" class="type" id="Electric" checked value="Electric" />
-          <label for="Electric">Electrico</label>
-          <input type="checkbox" class="type" id="Ground" checked value="Ground" />
-          <label for="Ground">Tierra</label>
-          <input type="checkbox" class="type" id="Fairy" checked value="Fairy" />
-          <label for="Fairy">Hada</label>
-          <input type="checkbox" class="type" id="Fighting" checked value="Fighting" />
-          <label for="Fighting">Lucha</label>
-          <input type="checkbox" class="type" id="Psychic" checked value="Psychic" />
-          <label for="Psychic">Psiquico</label>
-          <input type="checkbox" class="type" id="Rock" checked value="Rock" />
-          <label for="Rock">Roca</label>
-          <input type="checkbox" class="type" id="Ghost" checked value="Ghost" />
-          <label for="Ghost">Fantasma</label>
-          <input type="checkbox" class="type" id="Ice" checked value="Ice" />
-          <label for="Ice">Hielo</label>
-          <input type="checkbox" class="type" id="Dragon" checked value="Dragon" />
-          <label for="Dragon">Dragon</label>
+          <select id="metrica" class="mr-3">
+            <option value="total">Total</option>
+            <option value="HP">Puntos de vida</option>
+            <option value="Attack">Ataque</option>
+            <option value="Defense">Defensa</option>
+            <option value="SpAtk">Ataque Especial</option>
+            <option value="SpDef">Defensa Especial</option>
+          </select>
+          Top:
+          <select id="rank" class="mr-3">
+            <option value="10">Top 10</option>
+            <option value="25">Top 25</option>
+            <option value="151">Top 151</option>
+          </select>
+          <button class="btn btn-outline-primary" onclick="cambiaOrden()">
+            Descendente
+          </button>
+
+          <div id="types">
+            <input
+              type="checkbox"
+              id="Grass"
+              class="type"
+              checked
+              value="Grass"
+            />
+            <label for="Grass">Planta</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Fire"
+              checked
+              value="Fire"
+            />
+            <label for="Fire">Fuego</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Water"
+              checked
+              value="Water"
+            />
+            <label for="Water">Agua</label>
+            <input type="checkbox" class="type" id="Bug" checked value="Bug" />
+            <label for="Bug">Bicho</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Normal"
+              checked
+              value="Normal"
+            />
+            <label for="Normal">Normal</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Poison"
+              checked
+              value="Poison"
+            />
+            <label for="Poison">Veneno</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Electric"
+              checked
+              value="Electric"
+            />
+            <label for="Electric">Electrico</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Ground"
+              checked
+              value="Ground"
+            />
+            <label for="Ground">Tierra</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Fairy"
+              checked
+              value="Fairy"
+            />
+            <label for="Fairy">Hada</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Fighting"
+              checked
+              value="Fighting"
+            />
+            <label for="Fighting">Lucha</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Psychic"
+              checked
+              value="Psychic"
+            />
+            <label for="Psychic">Psiquico</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Rock"
+              checked
+              value="Rock"
+            />
+            <label for="Rock">Roca</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Ghost"
+              checked
+              value="Ghost"
+            />
+            <label for="Ghost">Fantasma</label>
+            <input type="checkbox" class="type" id="Ice" checked value="Ice" />
+            <label for="Ice">Hielo</label>
+            <input
+              type="checkbox"
+              class="type"
+              id="Dragon"
+              checked
+              value="Dragon"
+            />
+            <label for="Dragon">Dragon</label>
+          </div>
         </div>
-      </div>
       </div>
 
       <div class="row mb-4">

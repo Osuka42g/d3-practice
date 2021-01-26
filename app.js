@@ -10,6 +10,9 @@ margins = { top: 30, left: 50, right: 15, bottom: 120 };
 ancho = ancho_total - margins.left - margins.right;
 alto = alto_total - margins.top - margins.bottom;
 
+ascendente = false;
+rank = 10;
+
 svg = graf
   .append("svg")
   .style("width", `${ancho_total}px`)
@@ -69,8 +72,9 @@ typeSelect = d3.selectAll(".type");
 metrica = "total";
 metricaSelect = d3.select("#metrica");
 
+rankSelect = d3.select("#rank");
+
 function render(data) {
-  console.log(data)
   bars = g.selectAll("rect").data(data, d => d.name);
 
   bars
@@ -146,13 +150,15 @@ d3.csv("pokemon.csv")
   });
 
 function frame() {
-  dataframe = dataArray;
+  dataframe = dataArray.filter((e) => tipos[e.type]);
 
-  dataframe = dataframe.filter((e) => {
-    return tipos[e.type];
-  });
+  dataframe.sort((a, b) =>
+    ascendente
+      ? d3.ascending(a[metrica], b[metrica])
+      : d3.descending(a[metrica], b[metrica])
+  );
 
-  dataframe.sort((a, b) => d3.ascending(b[metrica], a[metrica]));
+  dataframe = dataframe.slice(0, rank);
 
   maxy = d3.max(dataframe, d => d[metrica]);
 
@@ -169,6 +175,11 @@ typeSelect.on("change", () => {
 
 metricaSelect.on("change", e => {
   metrica = e.target.value;
+  frame();
+});
+
+rankSelect.on("change", (e) => {
+  rank = e.target.value;
   frame();
 });
 
