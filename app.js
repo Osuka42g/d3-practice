@@ -1,19 +1,19 @@
-graf = d3.select("#graf");
+const graf = d3.select("#graf");
 
-ancho_total = graf.style("width").slice(0, -2);
-alto_total = (ancho_total * 9) / 16;
+const ancho_total = graf.style("width").slice(0, -2);
+const alto_total = (ancho_total * 9) / 16;
 
 graf.style("width", `${ancho_total}px`).style("height", `${alto_total}px`);
 
-margins = { top: 30, left: 50, right: 15, bottom: 120 };
+const margins = { top: 30, left: 50, right: 15, bottom: 120 };
 
-ancho = ancho_total - margins.left - margins.right;
-alto = alto_total - margins.top - margins.bottom;
+const ancho = ancho_total - margins.left - margins.right;
+const alto = alto_total - margins.top - margins.bottom;
 
-ascendente = false;
-rank = 10;
+let ascendente = false;
+let rank = 10;
 
-svg = graf
+const svg = graf
   .append("svg")
   .style("width", `${ancho_total}px`)
   .style("height", `${alto_total}px`);
@@ -32,13 +32,13 @@ color = d3
   .scaleOrdinal()
   .range(d3.schemeCategory10);
 
-xAxisGroup = g
+const xAxisGroup = g
   .append("g")
   .attr("transform", `translate(0, ${alto})`)
   .attr("class", "eje");
 yAxisGroup = g.append("g").attr("class", "eje");
 
-titulo = g
+const titulo = g
   .append("text")
   .attr("x", `${ancho / 2}px`)
   .attr("y", "-5px")
@@ -46,7 +46,7 @@ titulo = g
   .text("Pokémon stats")
   .attr("class", "titulo-grafica");
 
-dataArray = [];
+let dataArray = [];
 
 let tipos = {
   Grass: true,
@@ -84,13 +84,13 @@ const colorMapping = {
   Ice: "lightblue",
 };
 
-type = "all";
-typeSelect = d3.selectAll(".type");
+let type = "all";
+let typeSelect = d3.selectAll(".type");
 
-metrica = "total";
-metricaSelect = d3.select("#metrica");
+let metrica = "total";
+let metricaSelect = d3.select("#metrica");
 
-rankSelect = d3.select("#rank");
+let rankSelect = d3.select("#rank");
 
 function render(data) {
   bars = g.selectAll("rect").data(data, d => d.name);
@@ -201,14 +201,14 @@ rankSelect.on("change", (e) => {
   frame();
 });
 
-function toggleType(t) {
-  tipos[t] = !tipos[t];
-}
-
 typeSelect.on("change", (e) => {
   toggleType(e.target.value);
   frame();
 });
+
+function toggleType(t) {
+  tipos[t] = !tipos[t];
+}
 
 function cambiaOrden() {
   ascendente = !ascendente;
