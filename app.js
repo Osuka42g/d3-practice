@@ -66,6 +66,24 @@ let tipos = {
   Ice: true,
 };
 
+const colorMapping = {
+  Grass: "green",
+  Fire: "#FF6060",
+  Water: "#60ABFF",
+  Bug: "lightgreen",
+  Normal: "grey",
+  Poison: "purple",
+  Electric: "#DEE56C",
+  Ground: "brown",
+  Fairy: "lightpink",
+  Fighting: "darkred",
+  Psychic: "#BC84B8",
+  Rock: "#715757",
+  Ghost: "black",
+  Dragon: "darkblue",
+  Ice: "lightblue",
+};
+
 type = "all";
 typeSelect = d3.selectAll(".type");
 
@@ -91,7 +109,7 @@ function render(data) {
     .style("x", (d) => x(d.name) + "px")
     .style("y", (d) => y(d[metrica]) + "px")
     .style("height", (d) => alto - y(d[metrica]) + "px")
-    .style("fill", (d) => color(d.type))
+    .style("fill", (d) => colorMapping[d.type])
     .style("width", (d) => `${x.bandwidth()}px`);
 
   bars
