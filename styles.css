@@ -27,3 +27,8 @@
   font-weight: bold;
   font-size: 20px;
 }
+
+.bgimage {
+  opacity: 0.5;
+  filter: grayscale(80%);
+}

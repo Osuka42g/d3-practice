@@ -78,6 +78,35 @@ const colorMapping = {
 
 const highlight = (_, el) => {
 
+  const { id, name } = el;
+
+  const descriptors = [
+    name,
+    `Type: ${el.type}`,
+    `Atk: ${el.Attack}`,
+    `Def: ${el.Defense}`,
+    `SpAtk: ${el.SpAtk}`,
+    `SpDef: ${el.SpDef}`,
+  ];
+
+  descriptors.forEach((e, i) => {
+    svg
+      .append("text")
+      .attr("x", `280px`)
+      .attr("y", `${i * 20 + 10}`)
+      .text(e)
+      .attr("class", "pokedex-description hoverinfo");
+  });
+
+  svg
+    .append("svg:image")
+    .attr("class", "bgimage hoverinfo")
+    .attr("x", `-5px`)
+    .attr("y", "-5px")
+    .attr("width", "250px")
+    .attr("y", "-5px")
+    .attr("xlink:href", `sprites/${id} ${name}.png`);
+
   d3.selectAll(".dot")
   .transition()
     .duration(200)
@@ -92,7 +121,9 @@ const highlight = (_, el) => {
 };
 
 const unhighlight = (_, el) => {
-
+  
+  d3.selectAll(".hoverinfo").remove();
+  
   d3.selectAll(".dot")
   .transition()
     .duration(200)
@@ -110,23 +141,24 @@ function render(data) {
     .attr("cx", (d) => x(d[metrica2]))
     .attr("cy", (d) => y(d[metrica1]))
     .attr("r", 5)
-    .style("fill", (d) => colorMapping[d.type]);
-    
+    .style("fill", (d) => colorMapping[d.type])
+    .on("mouseover", highlight)
+    .on("mouseleave", unhighlight);
+
   chart.transition()
     .duration(1000)
     .attr("cx", (d) => x(d[metrica2]))
     .attr("cy", (d) => y(d[metrica1]));
-    
-  chart.on("mouseover", highlight);
-  chart.on("mouseleave", unhighlight);
-    
+
+
 }
 
 const toInt = (v) => parseInt(v, 10);
 
 d3.csv("pokemon.csv")
   .then((data) => {
-    dataArray = data.map((e) => ({
+    dataArray = data.map((e, i) => ({
+      id: i + 1,
       type: e["Type 1"],
       name: e.Name,
       total: toInt(e.Total),
